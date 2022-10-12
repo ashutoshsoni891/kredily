@@ -4,6 +4,9 @@ import json
 from datetime import datetime
 # Create your views here.
 
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import permission_classes
+
 from .models import Product , Order , kredilyUser
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
@@ -11,6 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 @csrf_exempt
+@permission_classes([IsAuthenticated])
 def add_user(request):
     try :
         if request.method == 'POST':
@@ -31,6 +35,7 @@ def add_user(request):
 
 
 @csrf_exempt
+@permission_classes([IsAuthenticated])
 def add_product(request):
     try :
         if request.method == 'POST':
@@ -49,6 +54,7 @@ def add_product(request):
         return JsonResponse({'message' : message , 'success' : False , 'status' : 400})
 
 @csrf_exempt
+@permission_classes([IsAuthenticated])
 def add_order(request):
 
     try :
@@ -78,7 +84,9 @@ def add_order(request):
         message = e
     finally:
         return JsonResponse({'message' : message , 'success' : False , 'status' : 400})
+
 @csrf_exempt
+@permission_classes([IsAuthenticated])
 def order_history(request):
 
     try:
@@ -107,6 +115,7 @@ def order_history(request):
         return JsonResponse({'message' : message , 'success' : False , 'status' : 400})
 
 @csrf_exempt
+@permission_classes([IsAuthenticated])
 def get_products(request):
 
     try:
