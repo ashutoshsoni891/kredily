@@ -1,3 +1,4 @@
+from urllib.parse import parse_qs
 from django.http import HttpResponse , JsonResponse
 from django.core.serializers import serialize
 import json
@@ -29,7 +30,9 @@ def add_user(request):
             return JsonResponse({'data' :  serial, 'success' : True , 'status' : 200 })
 
     except Exception as e:
-        return JsonResponse({'message' : e , 'success' : False , 'status' : 400})
+        message = e
+        pass
+    return JsonResponse({'message' : str(message) , 'success' : False , 'status' : 400})
 
 
 @csrf_exempt
@@ -47,7 +50,9 @@ def add_product(request):
         else:
             return HttpResponse('METHOD NOT ALLOWED!')
     except Exception as e:
-        return JsonResponse({'message' : e , 'success' : False , 'status' : 400})
+        message = e
+        pass
+    return JsonResponse({'message' : str(message) , 'success' : False , 'status' : 400})
 
 @csrf_exempt
 @permission_classes([IsAuthenticated])
@@ -77,7 +82,9 @@ def add_order(request):
         else:
             return HttpResponse('METHOD NOT ALLOWED!')
     except Exception as e:
-        return JsonResponse({'message' : e , 'success' : False , 'status' : 400})
+        message = e
+        pass
+    return JsonResponse({'message' : str(message) , 'success' : False , 'status' : 400})
 
 @csrf_exempt
 @permission_classes([IsAuthenticated])
@@ -104,7 +111,9 @@ def order_history(request):
             return HttpResponse('METHOD NOT ALLOWED!')
    
     except Exception as e:
-        return JsonResponse({'message' : e , 'success' : False , 'status' : 400})
+        message = e
+        pass
+    return JsonResponse({'message' : str(message) , 'success' : False , 'status' : 400})
 
 @csrf_exempt
 @permission_classes([IsAuthenticated])
@@ -145,6 +154,8 @@ def get_products(request):
             return HttpResponse('METHOD NOT ALLOWED!')
             
     except Exception as e:
-        return JsonResponse({'message' : e , 'success' : False , 'status' : 400})
+        message = e
+        pass
+    return JsonResponse({'message' : str(message) , 'success' : False , 'status' : 400})
 
 
