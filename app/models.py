@@ -7,7 +7,7 @@ import uuid
 # Create your models here.
 
 class kredilyUser(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null = True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null = True, blank = True)
     #can add extra fields
 
     
@@ -18,12 +18,11 @@ class Product(models.Model):
     price = models.IntegerField(null = False)
     quantity = models.IntegerField(null = False)
     createdAt = models.DateTimeField(auto_now = True)
-    upatedAt = models.DateTimeField()
+    updatedAt = models.DateTimeField(auto_now = True)
 
 class Order(models.Model):
     order_id = models.UUIDField(primary_key= True , default = uuid.uuid4 , editable=False)
     user = models.ForeignKey(kredilyUser , on_delete=models.CASCADE)
-    # products = ArrayField(models.ForeignKey(Product , on_delete=models.CASCADE))
     products = ArrayField(base_field = models.CharField(max_length = 50))
     createdAt = models.DateTimeField(auto_now = True)
-    upatedAt = models.DateTimeField() 
+    updatedAt = models.DateTimeField() 
