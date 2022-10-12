@@ -29,9 +29,7 @@ def add_user(request):
             return JsonResponse({'data' :  serial, 'success' : True , 'status' : 200 })
 
     except Exception as e:
-        message = e
-    finally:
-        return JsonResponse({'message' : message , 'success' : False , 'status' : 400})
+        return JsonResponse({'message' : e , 'success' : False , 'status' : 400})
 
 
 @csrf_exempt
@@ -49,9 +47,7 @@ def add_product(request):
         else:
             return HttpResponse('METHOD NOT ALLOWED!')
     except Exception as e:
-        message = e
-    finally:
-        return JsonResponse({'message' : message , 'success' : False , 'status' : 400})
+        return JsonResponse({'message' : e , 'success' : False , 'status' : 400})
 
 @csrf_exempt
 @permission_classes([IsAuthenticated])
@@ -81,9 +77,7 @@ def add_order(request):
         else:
             return HttpResponse('METHOD NOT ALLOWED!')
     except Exception as e:
-        message = e
-    finally:
-        return JsonResponse({'message' : message , 'success' : False , 'status' : 400})
+        return JsonResponse({'message' : e , 'success' : False , 'status' : 400})
 
 @csrf_exempt
 @permission_classes([IsAuthenticated])
@@ -110,9 +104,7 @@ def order_history(request):
             return HttpResponse('METHOD NOT ALLOWED!')
    
     except Exception as e:
-        message = e
-    finally:
-        return JsonResponse({'message' : message , 'success' : False , 'status' : 400})
+        return JsonResponse({'message' : e , 'success' : False , 'status' : 400})
 
 @csrf_exempt
 @permission_classes([IsAuthenticated])
@@ -153,8 +145,6 @@ def get_products(request):
             return HttpResponse('METHOD NOT ALLOWED!')
             
     except Exception as e:
-        message = e
-    finally:
-        return JsonResponse({'message' : message , 'success' : False , 'status' : 400})
+        return JsonResponse({'message' : e , 'success' : False , 'status' : 400})
 
 
