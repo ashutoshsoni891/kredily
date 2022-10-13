@@ -66,9 +66,9 @@ def add_order(request):
             pid = []
             for product in payload['products']:
                 p = Product.objects.get(uuid = product['product'])
-                if p.quantity < product['quantity']:
+                if p.quantity >= product['quantity']:
                     # return  HttpResponse('OUT OF STOCK!')
-                    print('out of stock!')
+                    # print('out of stock!')
                     p.quantity -= product['quantity']
                     p.save()
                 pid.append(product['product'])
